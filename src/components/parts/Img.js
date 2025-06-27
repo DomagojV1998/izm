@@ -20,4 +20,4 @@ const Img = ({src, size="medium_large", alt = "Nema opisa za sliku", classList})
     )
 };
 
-export default Img;
+export default Img;4

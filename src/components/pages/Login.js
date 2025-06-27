@@ -19,10 +19,18 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://wp1.edukacija.online/backend/login', formData);
+      const response = await axios.post(
+        'https://wp1.edukacija.online/backend/wp-json/jwt-auth/v1/token',
+        {
+          username: formData.korisnickoIme,
+          password: formData.lozinka,
+        }
+      );
+
+      // Sačuvaj token u localStorage
+      localStorage.setItem('token', response.data.token);
+
       setStatus({ message: 'Uspešno prijavljeni!', type: 'success' });
-      // Možeš sačuvati token ako backend vraća npr. response.data.token
-      // localStorage.setItem('token', response.data.token);
     } catch (error) {
       setStatus({ message: 'Neispravno korisničko ime ili lozinka.', type: 'danger' });
     }

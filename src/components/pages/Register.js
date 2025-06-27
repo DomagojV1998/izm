@@ -42,6 +42,7 @@ function Register() {
       await axios.post('https://wp1.edukacija.online/backend', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
         },
       });
       setStatus({ message: 'Registracija uspešna!', type: 'success' });
