@@ -16,6 +16,8 @@ import Clothing from "./components/pages/Clothing";
 import Prints from "./components/pages/Prints";
 
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import Login from './components/pages/Login';
+import Register from './components/pages/Register';
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
         <Route path="/prints" element={<Prints />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
       <Footer />
     </div>
