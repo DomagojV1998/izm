@@ -1,0 +1,10 @@
+.featured-image
+{
+    filter: grayscale(100%);
+    transition: all 300ms linear;
+}
+
+.featured-image:hover
+{
+    filter:grayscale(0);
+}

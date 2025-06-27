@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Heebo:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:wdth,wght@87.5,600&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
+
+body
+{
+    font-family: "Cascadia Code", sans-serif;
+    background-image: url(https://front1.edukacija.online/dvidovic/projekt/img/background%201.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.loading
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    z-index: 99;
+    background-image: url(https://front1.edukacija.online/dvidovic/projekt/img/loading.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #ffffff;
+    background-size: 120px;
+}
+
+.img
+{
+    width: 100%;
+}
+
+img
+{
+    width: 100%;
+    transition: all 0.5s ease;
+}
+
+img:hover 
+{
+    transform: scale(1.02);
+}
+
+
+.icons
+{
+    padding: 40px 0 0 0;
+}
+
+.icons a
+{
+    color: aliceblue;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 2px 2px #660d0d;
+    cursor: pointer;
+}
+
+.icons i
+{
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    transition: all 0.5s ease;
+}
+
+i:hover 
+{
+    color: #660d0d;
+    transform: scale(1.5);
+    text-shadow: 2px 2px #ffffff;
+}
+
+p
+{
+    color: aliceblue;
+    margin-bottom: 0;
+    text-shadow: 2px 2px #660d0d;
+}
+
+
