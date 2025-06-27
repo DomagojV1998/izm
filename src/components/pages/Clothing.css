@@ -26,16 +26,6 @@ body
     width: 100%;
 }
 
-.img img:hover 
-{
-    transform: scale(1.1);
-}
-
-img
-{
-    transition: all 0.5s ease;
-}
-
 .navbar
 {
     display: flex;
@@ -124,12 +114,6 @@ img
     padding-top: 5px;
     padding-bottom: 7px;
     text-shadow: 2px 2px black;
-}
-
-.hero img:hover
-{
-    transition: all 0.5s ease;
-    transform: scale(1.1);
 }
 
 .icons

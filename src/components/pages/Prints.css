@@ -26,16 +26,6 @@ body
     width: 100%;
 }
 
-.img img:hover 
-{
-    transform: scale(1.1);
-}
-
-img
-{
-    transition: all 0.5s ease;
-}
-
 .navbar
 {
     display: flex;
@@ -124,26 +114,6 @@ img
 {
     padding-top: 5px;
     text-shadow: 2px 2px black;
-}
-
-.hero img:hover
-{
-    transform: scale(1.2);
-}
-
-.prints-2:hover
-{
-    transform: scale(1.5);
-}
-
-.prints-3:hover
-{
-    transform: scale(1.5);
-}
-
-.prints,.prints-2,.prints-3
-{
-    transition: all 0.5s ease;
 }
 
 .icons
