@@ -8,6 +8,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import { motion } from "framer-motion";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const ShopSingle = () => {
         const [data, setData] = useState(null);
@@ -44,115 +46,70 @@ const ShopSingle = () => {
         };
     
         return(
-            <section class="hero">
-
-            <div class="container">
-
-                <div class="row">
-
-                    <div class="col-md-6 col-sm-12">
-
-                        <div class="slider">
-
-                            <Slider {...settings}>
-
-                                <div>
-
-                                    <Link onClick={() => setOpen(true)}>
-
-                                        <Img
-                                            src={data?._embedded?.["wp:featuredmedia"]?.[0]?.media_details}
-                                            size='medium_large' 
-                                            alt={'Istaknuta slika za članak: ' + data.title.rendered}
-                                            classList="mb-4"
-                                        />
-
-                                    </Link>
-
-
-                                </div>
-
-                                <div>
-
-                                    <Link onClick={() => setOpen(true)}>
-
-                                        <Img
-                                            src={data?._embedded?.["wp:featuredmedia"]?.[0]?.media_details}
-                                            size='medium_large' 
-                                            alt={'Istaknuta slika za članak: ' + data.title.rendered}
-                                            classList="mb-4"
-                                        />
-                                        
-                                    </Link>
-
-
-                                </div>
-
-                            </Slider>
-
-                            <Lightbox
-                                open={open}
-                                close={() => setOpen(false)}
-                                slides={[
-                                { src: "https://placehold.co/600x400" },
-                                { src: "https://placehold.co/600x400" },
-                                { src: "https://placehold.co/600x400" },
-                                ]}
-                            />
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6 col-sm-12">
-
-                        <div class="selector">
-
-                            <h3> {data.title.rendered} </h3>
-
-                            <h4> 28€ </h4>
-
-                            <label for="size"> Size: </label>
-
-                            <select name="size" class="size">
-                                
-                                <option class="active" value="choose-option"> Choose option </option>
-
-                                <option value="XS"> XS </option>
-
-                                <option value="S"> S </option>
-
-                                <option value="M"> M </option>
-
-                                <option value="L"> L </option>
-
-                                <option value="XL"> XL </option>
-
-                                <option value="XXL"> XXL </option>
-
-                            </select>
-
-                            <div class="number">
-
-                                <input class="quantity" type="number" value="1" min="1" />
-
-                                <button class="button"> Add to cart </button>
-
+            <section className="hero py-5">
+                <div className="container">
+                    <motion.div
+                    className="row"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    >
+                    <div className="col-md-6 col-sm-12">
+                        <Slider {...settings}>
+                        {[1, 2].map((_, i) => (
+                            <div key={i}>
+                            <Link onClick={() => setOpen(true)}>
+                                <Img
+                                src={data?._embedded?.["wp:featuredmedia"]?.[0]?.media_details}
+                                size="medium_large"
+                                alt={"Image: " + data.title.rendered}
+                                classList="mb-4"
+                                />
+                            </Link>
                             </div>
+                        ))}
+                        </Slider>
 
-                            <p class="description"> Description: </p>
-
-                            <div dangerouslySetInnerHTML={{ __html: data.content.rendered }} />
-
-                        </div>
-
+                        <Lightbox
+                        open={open}
+                        close={() => setOpen(false)}
+                        slides={[
+                            { src: "https://placehold.co/600x400" },
+                            { src: "https://placehold.co/600x400" },
+                        ]}
+                        />
                     </div>
 
+                    <div className="col-md-6 col-sm-12">
+                        <motion.div
+                        className="selector"
+                        initial={{ opacity: 0, x: 40 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.4, duration: 0.6 }}
+                        >
+                        <h3 className="mb-3">{data.title.rendered}</h3>
+                        <h4 className="mb-4">28€</h4>
+
+                        <label htmlFor="size">Size:</label>
+                        <select name="size" className="form-select mb-3">
+                            <option value="choose-option">Choose option</option>
+                            {["XS", "S", "M", "L", "XL", "XXL"].map(size => (
+                            <option key={size} value={size}>{size}</option>
+                            ))}
+                        </select>
+
+                        <div className="d-flex align-items-center gap-3 mb-3">
+                            <input className="form-control w-25" type="number" min="1" defaultValue="1" />
+                            <button className="btn btn-outline-light">Add to cart</button>
+                        </div>
+
+                        <p className="fw-bold mt-4">Description:</p>
+                        <div dangerouslySetInnerHTML={{ __html: data.content.rendered }} />
+                        </motion.div>
+                    </div>
+                    </motion.div>
                 </div>
-
-            </div>
-
-        </section>
+            </section>
         
         );
 };

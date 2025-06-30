@@ -1,87 +1,122 @@
-import React, { useState } from 'react';
-import { Container, Form, Row, Col, Button, Alert } from 'react-bootstrap';
-import axios from 'axios';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function Login() {
-  const [formData, setFormData] = useState({
-    korisnickoIme: '',
-    lozinka: '',
-  });
+const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [status, setStatus] = useState({ message: '', type: '' });
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
-      const response = await axios.post(
-        'https://wp1.edukacija.online/backend/wp-json/jwt-auth/v1/token',
-        {
-          username: formData.korisnickoIme,
-          password: formData.lozinka,
-        }
-      );
+      const response = await fetch("https://wp1.edukacija.online/backend/wp-json/jwt-auth/v1/token", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username,
+          password
+        })
+      });
 
-      // Sačuvaj token u localStorage
-      localStorage.setItem('token', response.data.token);
+      const data = await response.json();
 
-      setStatus({ message: 'Uspešno prijavljeni!', type: 'success' });
-    } catch (error) {
-      setStatus({ message: 'Neispravno korisničko ime ili lozinka.', type: 'danger' });
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("username", data.user_display_name);
+        setError(null);
+        navigate("/"); // ✅ Preusmjeri na početnu
+      } else {
+        // ✅ Ekstrakcija samo teksta iz eventualnog HTML-a
+        const parser = new DOMParser();
+        const parsedHtml = parser.parseFromString(data.message, 'text/html');
+        const cleanMessage = parsedHtml.body.textContent || "Greška prilikom prijave.";
+
+        setError(cleanMessage);
+      }
+    } catch (err) {
+      setError("Greška u mreži. Pokušajte ponovno.");
     }
+    setIsLoading(false);
   };
 
-  return React.createElement(
-    'section',
-    { className: 'section bg-light' },
-    React.createElement(
-      Container,
-      null,
-      React.createElement('h2', { className: 'text-center mb-4' }, 'Prijava'),
-      React.createElement(
-        Row,
-        { className: 'justify-content-center' },
-        React.createElement(
-          Col,
-          { md: 6 },
-          status.message &&
-            React.createElement(Alert, { variant: status.type }, status.message),
-          React.createElement(
-            Form,
-            { onSubmit: handleSubmit },
-            React.createElement(Form.Group, { className: 'mb-3', controlId: 'korisnickoIme' },
-              React.createElement(Form.Label, null, 'Korisničko ime'),
-              React.createElement(Form.Control, {
-                type: 'text',
-                name: 'korisnickoIme',
-                required: true,
-                onChange: handleChange,
-              })
-            ),
-            React.createElement(Form.Group, { className: 'mb-4', controlId: 'lozinka' },
-              React.createElement(Form.Label, null, 'Lozinka'),
-              React.createElement(Form.Control, {
-                type: 'password',
-                name: 'lozinka',
-                required: true,
-                onChange: handleChange,
-              })
-            ),
-            React.createElement(
-              'div',
-              { className: 'text-center' },
-              React.createElement(Button, { variant: 'primary', type: 'submit' }, 'Prijavi se')
-            )
-          )
-        )
-      )
-    )
-  );
-}
+  return (
+      <motion.div 
+        className="container d-flex justify-content-center align-items-center min-vh-100"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+      <motion.div 
+        className="card p-4 shadow" 
+        style={{ maxWidth: "400px", width: "100%" }}
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+      <motion.h2 
+          className="mb-4 text-center"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        Log in
+      </motion.h2>
+
+      {error && <motion.div 
+        className="alert alert-danger"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >{error}</motion.div>}
+
+      <form onSubmit={handleLogin}>
+        <motion.div className="mb-3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+          <label htmlFor="username" className="form-label">Username</label>
+          <input
+            type="text"
+            id="username"
+            className="form-control"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </motion.div>
+
+      <motion.div className="mb-3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>
+          <label htmlFor="password" className="form-label">Password</label>
+          <input
+            type="password"
+            id="password"
+            className="form-control"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+      </motion.div>
+
+      <motion.button 
+          type="submit" 
+          className="btn btn-dark w-100" 
+          disabled={isLoading}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ type: "spring", stiffness: 200 }}
+      >
+        {isLoading ? "Loading..." : "Log in"}
+      </motion.button>
+      </form>
+      </motion.div>
+      </motion.div>
+    );
+};
 
 export default Login;

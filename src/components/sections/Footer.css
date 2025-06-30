@@ -1,0 +1,9 @@
+footer a {
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    color: #000000 !important; 
+}
+
+footer a:hover {
+    color: #000000;
+}

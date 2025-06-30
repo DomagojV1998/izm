@@ -1,12 +1,14 @@
 import React from 'react';
+import { motion } from "framer-motion";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Loading = () => 
 {
     return (
-        <div className="d-flex justify-content-center align-items-center" style={{minHeight: "200px"}}>
-            <div className="spinner-border text-white" role="status">
+        <div className="d-flex justify-content-center align-items-center" style={{minHeight: "1000px"}}>
+            <div className="spinner-border text-dark" role="status">
                 <span className="visually-hidden">
-                    Učitavanje...
+                    Loading...
                 </span>
             </div>
         </div>

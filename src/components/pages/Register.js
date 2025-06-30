@@ -1,185 +1,204 @@
-import React, { useState } from 'react';
-import { Container, Form, Row, Col, Button, Alert } from 'react-bootstrap';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
+import { setStatus } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function Register() {
+const Register = () => {
   const [formData, setFormData] = useState({
-    ime: '',
-    prezime: '',
-    email: '',
-    datumRodjenja: '',
-    korisnickoIme: '',
-    lozinka: '',
-    avatar: null,
+    first_name: "",
+    last_name: "",
+    email: "",
+    birth_date: "",
+    username: "",
+    password: ""
   });
 
-  const [status, setStatus] = useState({ message: '', type: '' });
+  const [successMessage, setSuccessMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+  // Funkcija za dohvaćanje tokena
+  const getToken = async () => {
+
+    try {
+      const response = await fetch("https://wp1.edukacija.online/backend/wp-json/jwt-auth/v1/token", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: "dvidovic",
+          password: "93Yh 01mb xbny Zd3r LzRP pMqd"
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        return data.token; //Vraća token
+        setError(null);
+        navigate("/"); // ✅ Preusmjeri na početnu
+      } else {
+        // ✅ Ekstrakcija samo teksta iz eventualnog HTML-a
+        const parser = new DOMParser();
+        const parsedHtml = parser.parseFromString(data.message, 'text/html');
+        const cleanMessage = parsedHtml.body.textContent || "Greška prilikom prijave.";
+
+        setError(cleanMessage);
+      }
+    } catch (err) {
+      setError("Greška u mreži. Pokušajte ponovno.");
+    }
   };
 
-  const handleFileChange = (e) => {
-    setFormData((prev) => ({ ...prev, avatar: e.target.files[0] }));
+  const handleChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = new FormData();
-    data.append('ime', formData.ime);
-    data.append('prezime', formData.prezime);
-    data.append('email', formData.email);
-    data.append('datumRodjenja', formData.datumRodjenja);
-    data.append('korisnickoIme', formData.korisnickoIme);
-    data.append('lozinka', formData.lozinka);
-    if (formData.avatar) {
-      data.append('avatar', formData.avatar);
-    }
-
     try {
-      await axios.post('https://wp1.edukacija.online/backend', data, {
+      const response = await fetch("https://wp1.edukacija.online/backend/wp-json/wp/v2/users/", {
+        method: "POST",
         headers: {
-          'Content-Type': 'multipart/form-data',
-          "Authorization": `Bearer ${localStorage.getItem("token")}`
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + await getToken() // Ako je potrebno
         },
+        body: JSON.stringify(formData)
       });
-      setStatus({ message: 'Registracija uspešna!', type: 'success' });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "The registration failed.");
+      }
+
+      const result = await response.json();
+      setSuccessMessage("The registration was succesfull!");
+      setErrorMessage(null);
+      setFormData({
+        first_name: "",
+        last_name: "",
+        email: "",
+        birth_date: "",
+        username: "",
+        password: ""
+      });
     } catch (error) {
-      setStatus({ message: 'Greška prilikom registracije.', type: 'danger' });
+      setErrorMessage(error.message);
+      setSuccessMessage(null);
     }
   };
 
-  return React.createElement(
-    'section',
-    { className: 'section bg-light' },
-    React.createElement(
-      Container,
-      null,
-      React.createElement('h2', { className: 'text-center mb-4' }, 'Registracija'),
-      React.createElement(
-        Row,
-        { className: 'justify-content-center' },
-        React.createElement(
-          Col,
-          { md: 8 },
-          status.message &&
-            React.createElement(Alert, { variant: status.type }, status.message),
-          React.createElement(
-            Form,
-            { onSubmit: handleSubmit },
-            React.createElement(
-              Row,
-              { className: 'mb-3' },
-              React.createElement(
-                Col,
-                { md: 6 },
-                React.createElement(Form.Group, { controlId: 'ime' },
-                  React.createElement(Form.Label, null, 'Ime'),
-                  React.createElement(Form.Control, {
-                    type: 'text',
-                    name: 'ime',
-                    required: true,
-                    onChange: handleChange,
-                  })
-                )
-              ),
-              React.createElement(
-                Col,
-                { md: 6 },
-                React.createElement(Form.Group, { controlId: 'prezime' },
-                  React.createElement(Form.Label, null, 'Prezime'),
-                  React.createElement(Form.Control, {
-                    type: 'text',
-                    name: 'prezime',
-                    required: true,
-                    onChange: handleChange,
-                  })
-                )
-              )
-            ),
-            React.createElement(
-              Row,
-              { className: 'mb-3' },
-              React.createElement(
-                Col,
-                { md: 6 },
-                React.createElement(Form.Group, { controlId: 'email' },
-                  React.createElement(Form.Label, null, 'Email'),
-                  React.createElement(Form.Control, {
-                    type: 'email',
-                    name: 'email',
-                    required: true,
-                    onChange: handleChange,
-                  })
-                )
-              ),
-              React.createElement(
-                Col,
-                { md: 6 },
-                React.createElement(Form.Group, { controlId: 'datumRodjenja' },
-                  React.createElement(Form.Label, null, 'Datum rođenja'),
-                  React.createElement(Form.Control, {
-                    type: 'date',
-                    name: 'datumRodjenja',
-                    required: true,
-                    onChange: handleChange,
-                  })
-                )
-              )
-            ),
-            React.createElement(
-              Row,
-              { className: 'mb-3' },
-              React.createElement(
-                Col,
-                { md: 6 },
-                React.createElement(Form.Group, { controlId: 'korisnickoIme' },
-                  React.createElement(Form.Label, null, 'Korisničko ime'),
-                  React.createElement(Form.Control, {
-                    type: 'text',
-                    name: 'korisnickoIme',
-                    required: true,
-                    onChange: handleChange,
-                  })
-                )
-              ),
-              React.createElement(
-                Col,
-                { md: 6 },
-                React.createElement(Form.Group, { controlId: 'lozinka' },
-                  React.createElement(Form.Label, null, 'Lozinka'),
-                  React.createElement(Form.Control, {
-                    type: 'password',
-                    name: 'lozinka',
-                    required: true,
-                    onChange: handleChange,
-                  })
-                )
-              )
-            ),
-            React.createElement(
-              Form.Group,
-              { controlId: 'avatar', className: 'mb-4' },
-              React.createElement(Form.Label, null, 'Avatar (slika)'),
-              React.createElement(Form.Control, {
-                type: 'file',
-                name: 'avatar',
-                accept: 'image/*',
-                onChange: handleFileChange,
-              })
-            ),
-            React.createElement(
-              'div',
-              { className: 'text-center' },
-              React.createElement(Button, { variant: 'primary', type: 'submit' }, 'Registriraj se')
-            )
-          )
-        )
-      )
-    )
+  return (
+    <motion.div
+      className="container mt-5"
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+    >
+      <motion.h2
+        className="mb-4 text-center"
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+        transition={{ type: "spring", stiffness: 120, damping: 12 }}
+      >
+        User registration
+      </motion.h2>
+
+      {successMessage && <div className="alert alert-success">{successMessage}</div>}
+      {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
+
+      <form onSubmit={handleSubmit} className="row g-3">
+        <div className="col-md-6">
+          <label className="form-label">Name</label>
+          <input
+            type="text"
+            className="form-control"
+            name="first_name"
+            value={formData.first_name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="col-md-6">
+          <label className="form-label">Surname</label>
+          <input
+            type="text"
+            className="form-control"
+            name="last_name"
+            value={formData.last_name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="col-md-6">
+          <label className="form-label">Email adress</label>
+          <input
+            type="email"
+            className="form-control"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="col-md-6">
+          <label className="form-label">Date od birth</label>
+          <input
+            type="date"
+            className="form-control"
+            name="birth_date"
+            value={formData.birth_date}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="col-md-6">
+          <label className="form-label">Username</label>
+          <input
+            type="text"
+            className="form-control"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="col-md-6">
+          <label className="form-label">Password</label>
+          <input
+            type="password"
+            className="form-control"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <motion.div className="col-12 text-center mt-4">
+          <motion.button
+            type="submit"
+            className="btn btn-dark px-5"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            Register now!
+          </motion.button>
+        </motion.div>
+      </form>
+    </motion.div>
   );
-}
+};
 
 export default Register;

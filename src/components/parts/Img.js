@@ -1,5 +1,7 @@
 import React from 'react';
 import './Img.css'
+import { motion } from "framer-motion";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Img = ({src, size="medium_large", alt = "Nema opisa za sliku", classList}) => 
 {

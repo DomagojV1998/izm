@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./Home.css"
 import Loading from "../parts/Loading.js"
 import Error from "../parts/Error.js";
+import { motion } from "framer-motion";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Home = () => {
 
@@ -31,27 +33,16 @@ const Home = () => {
 
 
     return(
-
-        <section class="body">
-
-            <div class="container text-center">
-
-                <div class="col-md-10 m-auto col-sm-12">
-
-                    <div class="img">
-
-                        <a href="/shop"> 
-
-                            <img src="img/Scrape-the-floor front-2.png" alt="Home Image" /> 
-
-                        </a>
-                    </div>
+        
+        <motion.section className="hero-section d-flex align-items-center justify-content-center text-center text-light" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
+            <div className="container">
+                <h1 className="display-3 mb-4">Step Into the Future</h1>
+                <p className="lead mb-5 text-white">New collections dropping soon.</p>
+                <div className="placeholder-img">
+                    <img src="https://front1.edukacija.online/dvidovic/projekt/img/Scrape%20the%20floor%20front.png" alt="Main Banner" className="img-fluid w-100"/>
                 </div>
-
             </div>
-
-        </section>
-
+        </motion.section>
 
     );
 };

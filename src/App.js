@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './gutenberg.css';
 import './App.css';
+import { motion } from "framer-motion";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Header from "./components/sections/Header";
 import Footer from "./components/sections/Footer";

@@ -1,149 +1,53 @@
-@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Heebo:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:wdth,wght@87.5,600&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
-
-body
-{
-    font-family: "Cascadia Code", sans-serif;
-    background-image: url(https://front1.edukacija.online/dvidovic/projekt/img/background%201.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.img
-{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0 10px 0;
-}
-
-.img img
-{
-    width: 80%;
-}
-
-.navbar
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.nav-items
-{
-    display: inline;
-    align-items: center;
-    padding-left: 0;
-    transition: all 0.5s ease;
-}
-
-.nav-items a
-{
-    text-decoration: none;
-    color: aliceblue;
-    transition: all 0.5s ease;
-}
-
-.list-item
-{
-    display: inline;
-    text-decoration: none;
-    list-style: none;
-    color: aliceblue;
-    text-shadow: 2px 2px #660d0d;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px;
-    transition: all 0.5s ease;
-}
-
-.list-item-2 
-{
-    display: inline;
-    text-decoration: none;
-    list-style: none;
-    color: aliceblue;
-    text-shadow: 2px 2px #660d0d;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px;
-    transition: all 0.5s ease;
-}
-
-.list-item a:hover 
-{
+.about-hero {
+    background-color: #ffffff;
     color: #000000;
-    transform: scale(1.5);
-    text-shadow: 2px 2px #ffffff;
-}
-
-.list-item-2 a:hover 
-{
-    color: #000000;
-    transform: scale(1.5);
-    text-shadow: 2px 2px #ffffff;
-}
-
-.active
-{
-    color:#660d0d
-}
-
-.hero
-{
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+    min-height: 70vh;
     display: flex;
-}
-
-.hero img
-{
-    width: 90%;
-}
-
-.hero p
-{
-    padding: 20px;
-    margin-top: 10px;
-    text-shadow: 2px 2px black; 
-}
-
-.icons a
-{
-    color: aliceblue;
-    text-decoration: none;
-    justify-content: center;
     align-items: center;
-    text-shadow: 2px 2px #660d0d;
 }
 
-.icons i
-{
-    width: 50px;
-    height: 50px;
-    font-size: 25px;
+.about-hero p {
+    font-family: "Montserrat", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    letter-spacing: 0.05em;
+    max-width: 100%;
 }
 
-i:hover 
-{
-    color: #660d0d;
-    transform: scale(1.5);
-    text-shadow: 2px 2px #ffffff;
+.about-image {
+    max-width: 100%;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
-i
-{
-    transition: all 0.5s ease;
+.about-image:hover,
+.about-image:focus {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+    outline: none;
 }
 
-p
-{
-    color: aliceblue;
-    margin-bottom: 0;
-    text-shadow: 2px 2px #660d0d;
+@media (max-width: 991.98px) {
+    .about-hero p {
+        font-size: 1rem;
+        text-align: center;
+    }
+    .about-image {
+        margin: 0 auto 2rem;
+        display: block;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .about-hero {
+        min-height: auto;
+        padding: 3rem 1.5rem;
+    }
+    .about-hero p {
+        font-size: 0.95rem;
+    }
 }

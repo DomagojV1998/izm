@@ -1,24 +1,42 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Footer = () => 
 {
     return (
+        <motion.footer
+            className="py-4"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+        >
         <div className="container text-center">
-                <div className="row">
-                    <div className="col-md-12 col-sm-12">
-                        <div className="icons">
-                            <Link to="#"><i className="fa-solid fa-cart-shopping"></i></Link>
-                            <Link to="#"><i className="fa-brands fa-square-facebook"></i></Link>
-                            <Link to="#"><i className="fa-brands fa-instagram"></i></Link>
-                            <Link to="#"><i className="fa-brands fa-youtube"></i></Link>
-                            <Link to="#"><i className="fa-brands fa-tiktok"></i></Link>
-                            <p> scrapethefloor ©2025 All rights reserved </p>                
-                        </div>
-                    </div>
-                </div>
+            <p className="mb-2">
+            &copy; {new Date().getFullYear()} scrapethefloor. All rights reserved.
+            </p>
+            <img src="" alt="Main Banner" className="img-fluid w-100"/>
+            <div className="d-flex justify-content-center gap-4 flex-wrap">
+            <a href="#" className="text-decoration-none">
+                Shop
+            </a>
+            <a href="#" className="text-decoration-none">
+                Prints
+            </a>
+            <a href="#" className="text-decoration-none">
+                Clothing
+            </a>
+            <a href="#" className="text-decoration-none">
+                About
+            </a>
+            <a href="#" className="text-decoration-none">
+                Contact
+            </a>
             </div>
-    )
+        </div>
+        </motion.footer>
+  );
 };
 
 export default Footer;

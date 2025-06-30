@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import "./Shop.css"
 import Loading from "../parts/Loading.js"
 import Error from "../parts/Error.js";
+import { motion } from "framer-motion";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Img from "../parts/Img.js";
 
 const Shop = () => {
 
@@ -32,43 +35,39 @@ const Shop = () => {
 
     return(
 
-         <section className="hero">
-
+        <motion.section
+            className="hero py-5"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+        >
             <div className="container text-center">
-
                 <div className="row">
-
-                    <div className="col-md-6 col-sm-6">
-
-                        <p> Clothing </p>
-
-                        <a href="/clothing"> 
-
-                            <img className="clothing" src="https://front1.edukacija.online/dvidovic/projekt/img/3%20black%20t-shirt.jpg" alt="clothing" />
-
+                    <div className="col-md-6 col-sm-6 mb-4">
+                        <p className="fs-4">Clothing</p>
+                        <a href="/clothing">
+                            <Img
+                                className="img-fluid rounded shadow-sm"
+                                src="https://front1.edukacija.online/dvidovic/projekt/img/3%20black%20t-shirt.jpg"
+                                alt="clothing"
+                            />
                         </a>
-
-                    </div>
-
-
-                    <div className="col-md-6 col-sm-6">
-
-                        <p> Prints </p>
-
-                        <a href="/prints"> 
-
-                            <img className="prints" src="https://front1.edukacija.online/dvidovic/projekt/img/flowereye%20red.jpg" alt="prints" />
-
-                        </a>
-
-                    </div>
-
                 </div>
 
+                <div className="col-md-6 col-sm-6 mb-4">
+                    <p className="fs-4">Prints</p>
+                    <a href="/prints">
+                        <Img
+                            className="img-fluid rounded shadow-sm"
+                            src="https://front1.edukacija.online/dvidovic/projekt/img/flowereye%20red.jpg"
+                            alt="prints"
+                        />
+                    </a>
+                </div>
+                </div>
             </div>
-
-        </section>
+        </motion.section>
     );
-};
+}
 
 export default Shop;
