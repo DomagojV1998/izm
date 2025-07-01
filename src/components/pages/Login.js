@@ -38,83 +38,41 @@ const Login = () => {
         // ✅ Ekstrakcija samo teksta iz eventualnog HTML-a
         const parser = new DOMParser();
         const parsedHtml = parser.parseFromString(data.message, 'text/html');
-        const cleanMessage = parsedHtml.body.textContent || "Greška prilikom prijave.";
+        const cleanMessage = parsedHtml.body.textContent || "Log in error.";
 
         setError(cleanMessage);
       }
     } catch (err) {
-      setError("Greška u mreži. Pokušajte ponovno.");
+      setError("Service error. Try again.");
     }
     setIsLoading(false);
   };
 
   return (
-      <motion.div 
-        className="container d-flex justify-content-center align-items-center min-vh-100"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-      <motion.div 
-        className="card p-4 shadow" 
-        style={{ maxWidth: "400px", width: "100%" }}
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-      <motion.h2 
-          className="mb-4 text-center"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-      >
-        Log in
-      </motion.h2>
+      <motion.div className="container d-flex justify-content-center align-items-center min-vh-100" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
+        <motion.div  className="card p-4 shadow"  style={{ maxWidth: "400px", width: "100%" }} initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, delay: 0.2 }}>
+          <motion.h2 className="mb-4 text-center" initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.5, delay: 0.4 }}>
+            Log in
+          </motion.h2>
 
-      {error && <motion.div 
-        className="alert alert-danger"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >{error}</motion.div>}
+          {error && <motion.div className="alert alert-danger" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}> {error}</motion.div>}
 
-      <form onSubmit={handleLogin}>
-        <motion.div className="mb-3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-          <label htmlFor="username" className="form-label">Username</label>
-          <input
-            type="text"
-            id="username"
-            className="form-control"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+          <form onSubmit={handleLogin}>
+            <motion.div className="mb-3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+              <label htmlFor="username" className="form-label">Username</label>
+              <input type="text" id="username" className="form-control" value={username} onChange={(e) => setUsername(e.target.value)} required />
+            </motion.div>
+
+            <motion.div className="mb-3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>
+                <label htmlFor="password" className="form-label">Password</label>
+                <input type="password" id="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            </motion.div>
+
+            <motion.button type="submit" className="btn btn-dark w-100" disabled={isLoading} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{ type: "spring", stiffness: 200 }}>
+              {isLoading ? "Loading..." : "Log in"}
+            </motion.button>
+          </form>
         </motion.div>
-
-      <motion.div className="mb-3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>
-          <label htmlFor="password" className="form-label">Password</label>
-          <input
-            type="password"
-            id="password"
-            className="form-control"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-      </motion.div>
-
-      <motion.button 
-          type="submit" 
-          className="btn btn-dark w-100" 
-          disabled={isLoading}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ type: "spring", stiffness: 200 }}
-      >
-        {isLoading ? "Loading..." : "Log in"}
-      </motion.button>
-      </form>
-      </motion.div>
       </motion.div>
     );
 };

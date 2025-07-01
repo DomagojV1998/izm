@@ -34,13 +34,7 @@ const Shop = () => {
 
 
     return(
-
-        <motion.section
-            className="hero py-5"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-        >
+        <motion.section className="hero py-5" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="container text-center">
                 <div className="row">
                     <div className="col-md-6 col-sm-6 mb-4">
@@ -48,22 +42,21 @@ const Shop = () => {
                         <a href="/clothing">
                             <Img
                                 className="img-fluid rounded shadow-sm"
-                                src="https://front1.edukacija.online/dvidovic/projekt/img/3%20black%20t-shirt.jpg"
+                                src="https://front1.edukacija.online/dvidovic/projekt/img/ftp-front.jpg"
                                 alt="clothing"
                             />
                         </a>
-                </div>
-
-                <div className="col-md-6 col-sm-6 mb-4">
-                    <p className="fs-4">Prints</p>
-                    <a href="/prints">
-                        <Img
-                            className="img-fluid rounded shadow-sm"
-                            src="https://front1.edukacija.online/dvidovic/projekt/img/flowereye%20red.jpg"
-                            alt="prints"
-                        />
-                    </a>
-                </div>
+                    </div>
+                    <div className="col-md-6 col-sm-6 mb-4">
+                        <p className="fs-4">Prints</p>
+                        <a href="/prints">
+                            <Img
+                                className="img-fluid rounded shadow-sm"
+                                src="https://front1.edukacija.online/dvidovic/projekt/img/iseeyou.jpg"
+                                alt="prints"
+                            />
+                        </a>
+                    </div>
                 </div>
             </div>
         </motion.section>

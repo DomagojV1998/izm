@@ -47,56 +47,21 @@ const Contact = () => {
   if (!data) return <Loading />;
 
   return (
-    <motion.div
-      className="container text-center py-5"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
+    <motion.div className="container text-center py-5" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
       <div className="step step-1">
         <div className="row justify-content-center">
           <div className="col-md-8">
             <p className="mb-4 fs-5">
               For any questions, custom prints & design don’t hesitate to send us a message.
             </p>
-
             {submitted ? (
               <div className="alert alert-success">Your message has been sent. Thank you!</div>
             ) : (
               <form className="contact-form" onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  name="name"
-                  className="form-control mb-3"
-                  placeholder="Name"
-                  value={form.name}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="email"
-                  name="email"
-                  className="form-control mb-3"
-                  placeholder="Email"
-                  value={form.email}
-                  onChange={handleChange}
-                  required
-                />
-                <textarea
-                  name="message"
-                  className="form-control mb-3"
-                  placeholder="Message"
-                  value={form.message}
-                  onChange={handleChange}
-                  required
-                  rows={4}
-                />
-                <button
-                  type="submit"
-                  className={`btn btn-primary ${!isFormValid ? "disabled" : ""}`}
-                >
-                  Send
-                </button>
+                <input type="text" name="name" className="form-control mb-3" placeholder="Name" value={form.name} onChange={handleChange} required />
+                <input type="email" name="email" className="form-control mb-3" placeholder="Email" value={form.email} onChange={handleChange} required />
+                <textarea name="message" className="form-control mb-3" placeholder="Message" value={form.message} onChange={handleChange} required rows={4} />
+                <button type="submit" className={`btn btn-primary ${!isFormValid ? "disabled" : ""}`}> Send </button>
               </form>
             )}
           </div>

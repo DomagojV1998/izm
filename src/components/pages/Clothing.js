@@ -34,22 +34,11 @@ const Shop = () => {
 
 
     return(
-
         <section className="hero">
             <div className="container">
-                <motion.div
-                className="row"
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                >
+                <motion.div className="row" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 {data.map(product => (
-                    <motion.div
-                    className="col-md-4 col-sm-6 mb-5"
-                    key={product.id}
-                    whileHover={{ scale: 1.03 }}
-                    transition={{ type: 'spring', stiffness: 200 }}
-                    >
+                    <motion.div className="col-md-4 col-sm-6 mb-5" key={product.id} nwhileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 200 }}>
                     <Link className="clothing-img" to={'/shop/' + product.slug}>
                         <Img
                         src={product?._embedded?.["wp:featuredmedia"]?.[0]?.media_details}

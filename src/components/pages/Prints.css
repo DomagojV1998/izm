@@ -28,7 +28,6 @@ p {
     font-weight: 500;
 }
 
-/* Responsive tweaks */
 @media (max-width: 768px) {
     .col-sm-6 {
         margin-bottom: 2rem;

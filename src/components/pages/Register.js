@@ -47,12 +47,12 @@ const Register = () => {
         // ✅ Ekstrakcija samo teksta iz eventualnog HTML-a
         const parser = new DOMParser();
         const parsedHtml = parser.parseFromString(data.message, 'text/html');
-        const cleanMessage = parsedHtml.body.textContent || "Greška prilikom prijave.";
+        const cleanMessage = parsedHtml.body.textContent || "Log in error.";
 
         setError(cleanMessage);
       }
     } catch (err) {
-      setError("Greška u mreži. Pokušajte ponovno.");
+      setError("Service error. Try again.");
     }
   };
 
@@ -99,18 +99,8 @@ const Register = () => {
   };
 
   return (
-    <motion.div
-      className="container mt-5"
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-    >
-      <motion.h2
-        className="mb-4 text-center"
-        initial={{ scale: 0.8 }}
-        animate={{ scale: 1 }}
-        transition={{ type: "spring", stiffness: 120, damping: 12 }}
-      >
+    <motion.div className="container mt-5" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+      <motion.h2 className="mb-4 text-center" initial={{ scale: 0.8 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 120, damping: 12 }}>
         User registration
       </motion.h2>
 
@@ -120,79 +110,30 @@ const Register = () => {
       <form onSubmit={handleSubmit} className="row g-3">
         <div className="col-md-6">
           <label className="form-label">Name</label>
-          <input
-            type="text"
-            className="form-control"
-            name="first_name"
-            value={formData.first_name}
-            onChange={handleChange}
-            required
-          />
+          <input type="text" className="form-control" name="first_name" value={formData.first_name} onChange={handleChange} required />
         </div>
         <div className="col-md-6">
           <label className="form-label">Surname</label>
-          <input
-            type="text"
-            className="form-control"
-            name="last_name"
-            value={formData.last_name}
-            onChange={handleChange}
-            required
-          />
+          <input type="text" className="form-control" name="last_name" value={formData.last_name} onChange={handleChange} required />
         </div>
         <div className="col-md-6">
           <label className="form-label">Email adress</label>
-          <input
-            type="email"
-            className="form-control"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
+          <input type="email" className="form-control" name="email" value={formData.email} onChange={handleChange} required />
         </div>
         <div className="col-md-6">
           <label className="form-label">Date od birth</label>
-          <input
-            type="date"
-            className="form-control"
-            name="birth_date"
-            value={formData.birth_date}
-            onChange={handleChange}
-            required
-          />
+          <input type="date" className="form-control" name="birth_date" value={formData.birth_date} onChange={handleChange} required />
         </div>
         <div className="col-md-6">
           <label className="form-label">Username</label>
-          <input
-            type="text"
-            className="form-control"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
+          <input type="text" className="form-control" name="username" value={formData.username} onChange={handleChange} required />
         </div>
         <div className="col-md-6">
           <label className="form-label">Password</label>
-          <input
-            type="password"
-            className="form-control"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
+          <input type="password" className="form-control" name="password" value={formData.password} onChange={handleChange} required />
         </div>
-
         <motion.div className="col-12 text-center mt-4">
-          <motion.button
-            type="submit"
-            className="btn btn-dark px-5"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
+          <motion.button type="submit" className="btn btn-dark px-5" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 300 }} >
             Register now!
           </motion.button>
         </motion.div>

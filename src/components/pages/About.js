@@ -35,12 +35,7 @@ const About = () => {
     <section className="about-hero py-5">
       <div className="container text-center">
         <div className="row align-items-center">
-          <motion.div
-            className="col-lg-4 mb-4 mb-lg-0"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
+          <motion.div className="col-lg-4 mb-4 mb-lg-0" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
             <p>{data.content.rendered ? <div dangerouslySetInnerHTML={{ __html: data.content.rendered }} /> : (
               <>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis luctus libero.
@@ -50,27 +45,17 @@ const About = () => {
             )}</p>
           </motion.div>
 
-          <motion.div
-            className="col-lg-4 mb-4 mb-lg-0"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
+          <motion.div className="col-lg-4 mb-4 mb-lg-0" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}>
             <a href="/shop">
               <img
                 className="about-image img-fluid rounded shadow-lg"
-                src="https://front1.edukacija.online/dvidovic/projekt/img/Glowing%20star%20no%20outer%20glow.png"
+                src="https://front1.edukacija.online/dvidovic/projekt/img/logo7.png"
                 alt="About"
               />
             </a>
           </motion.div>
 
-          <motion.div
-            className="col-lg-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
+          <motion.div className="col-lg-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis luctus libero.
               Curabitur suscipit fermentum mauris eu scelerisque. Phasellus orci quam, fermentum nec viverra eu,

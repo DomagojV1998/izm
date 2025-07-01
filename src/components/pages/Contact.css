@@ -1,5 +1,4 @@
-.contact-form input,
-.contact-form textarea {
+.contact-form input, .contact-form textarea {
     border-radius: 10px;
     padding: 12px;
 }

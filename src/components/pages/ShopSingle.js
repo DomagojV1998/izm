@@ -12,104 +12,90 @@ import { motion } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const ShopSingle = () => {
-        const [data, setData] = useState(null);
-        const [error, setError] = useState(null);
-        const {id} = useParams();
-        const [open, setOpen] = React.useState(false);
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+    const {id} = useParams();
+    const [open, setOpen] = React.useState(false);
     
-        useEffect(() => {
-            const fetchPage = async () => {
-                try {
-                    const response = await fetch('https://wp1.edukacija.online/backend/wp-json/wp/v2/product?slug=' + id + '&_embed');
-                    if (!response.ok) {
-                        throw new Error(`Došlo je do greške: ${response.status}`);
-                    }
-                    const json = await response.json();
-                    setData(json[0]);
-                } catch (err) {
-                    setError(err.message);
+    useEffect(() => {
+        const fetchPage = async () => {
+            try {
+                const response = await fetch('https://wp1.edukacija.online/backend/wp-json/wp/v2/product?slug=' + id + '&_embed');
+                if (!response.ok) {
+                    throw new Error(`Došlo je do greške: ${response.status}`);
+                }
+                const json = await response.json();
+                setData(json[0]);
+                } 
+            catch (err) {
+                setError(err.message);
                 }
             };
     
-            fetchPage();
+        fetchPage();
         }, []);
     
-        if (error) return <Error />;
-        if (!data) return <Loading />;
+    if (error) return <Error />;
+    if (!data) return <Loading />;
 
-        var settings = {
-            dots: true,
-            infinite: false,
-            speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1
-        };
+    var settings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
     
-        return(
-            <section className="hero py-5">
-                <div className="container">
-                    <motion.div
-                    className="row"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    >
+    return(
+        <section className="hero py-5">
+            <div className="container">
+                <motion.div className="row" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                     <div className="col-md-6 col-sm-12">
                         <Slider {...settings}>
-                        {[1, 2].map((_, i) => (
-                            <div key={i}>
-                            <Link onClick={() => setOpen(true)}>
-                                <Img
-                                src={data?._embedded?.["wp:featuredmedia"]?.[0]?.media_details}
-                                size="medium_large"
-                                alt={"Image: " + data.title.rendered}
-                                classList="mb-4"
-                                />
-                            </Link>
-                            </div>
-                        ))}
+                            {[1, 2].map((_, i) => (
+                                <div key={i}>
+                                    <Link onClick={() => setOpen(true)}>
+                                        <Img
+                                        src={data?._embedded?.["wp:featuredmedia"]?.[0]?.media_details}
+                                        size="medium_large"
+                                        alt={"Image: " + data.title.rendered}
+                                        classList="mb-4"
+                                        />
+                                    </Link>
+                                </div>
+                            ))}
                         </Slider>
-
                         <Lightbox
-                        open={open}
-                        close={() => setOpen(false)}
-                        slides={[
-                            { src: "https://placehold.co/600x400" },
-                            { src: "https://placehold.co/600x400" },
-                        ]}
+                            open={open}
+                            close={() => setOpen(false)}
+                            slides={[
+                                { src: "https://placehold.co/600x400" },
+                                { src: "https://placehold.co/600x400" },
+                            ]}
                         />
                     </div>
-
                     <div className="col-md-6 col-sm-12">
-                        <motion.div
-                        className="selector"
-                        initial={{ opacity: 0, x: 40 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.4, duration: 0.6 }}
-                        >
-                        <h3 className="mb-3">{data.title.rendered}</h3>
-                        <h4 className="mb-4">28€</h4>
-
-                        <label htmlFor="size">Size:</label>
-                        <select name="size" className="form-select mb-3">
-                            <option value="choose-option">Choose option</option>
-                            {["XS", "S", "M", "L", "XL", "XXL"].map(size => (
-                            <option key={size} value={size}>{size}</option>
-                            ))}
-                        </select>
-
-                        <div className="d-flex align-items-center gap-3 mb-3">
-                            <input className="form-control w-25" type="number" min="1" defaultValue="1" />
-                            <button className="btn btn-outline-light">Add to cart</button>
-                        </div>
-
-                        <p className="fw-bold mt-4">Description:</p>
-                        <div dangerouslySetInnerHTML={{ __html: data.content.rendered }} />
+                        <motion.div className="selector" initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4, duration: 0.6 }}>
+                            <h3 className="mb-3">{data.title.rendered}</h3>
+                            <h4 className="mb-4">28€</h4>
+                            <label htmlFor="size">Size:</label>
+                            <select name="size" className="form-select mb-3">
+                                <option value="choose-option">Choose option</option>
+                                {["XS", "S", "M", "L", "XL", "XXL"].map(size => (
+                                <option key={size} value={size}>{size}</option>
+                                ))}
+                            </select>
+                            <div className="d-flex align-items-center gap-3 mb-3">
+                                <input className="form-control w-25" type="number" min="1" defaultValue="1" />
+                                <button className="btn btn-outline-light">Add to cart</button>
+                            </div>
+                            <p className="fw-bold mt-4">Description:</p>
+                            <div dangerouslySetInnerHTML={{ __html: data.content.rendered }} />
                         </motion.div>
                     </div>
-                    </motion.div>
-                </div>
-            </section>
+                </motion.div>
+            </div>
+        </section>
         
         );
 };

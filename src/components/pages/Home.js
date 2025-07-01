@@ -39,7 +39,7 @@ const Home = () => {
                 <h1 className="display-3 mb-4">Step Into the Future</h1>
                 <p className="lead mb-5 text-white">New collections dropping soon.</p>
                 <div className="placeholder-img">
-                    <img src="https://front1.edukacija.online/dvidovic/projekt/img/Scrape%20the%20floor%20front.png" alt="Main Banner" className="img-fluid w-100"/>
+                    <img src="https://front1.edukacija.online/dvidovic/projekt/img/logo8.png" alt="Main Banner" className="img-fluid w-100"/>
                 </div>
             </div>
         </motion.section>
