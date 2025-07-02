@@ -42,7 +42,7 @@ const Shop = () => {
                             <Link className="prints-img" to={'/shop/' + product.slug}>
                                 <Img
                                     src={product?._embedded?.["wp:featuredmedia"]?.[0]?.media_details}
-                                    size="medium_large"
+                                    size="large"
                                     alt={"Image: " + product.title.rendered}
                                     classList=""
                                 />

@@ -43,17 +43,9 @@ const Home = () => {
                 <div className="carousel-inner">
                     {[1, 2, 3].map((item, index) => (
                     <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={index}>
-                        <motion.div className="d-block w-100 text-white p-5" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: index * 0.2 }} style={{  backgroundImage: `url(https://wp1.edukacija.online/backend/wp-content/uploads/2025/07/logo${item}-scaled.jpg)`, backgroundSize: 'cover', backgroundPosition: 'center', height: '500px',
+                        <motion.div className="d-block w-100 text-white p-5" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: index * 0.2 }} style={{  backgroundImage: `url(https://wp1.edukacija.online/backend/wp-content/uploads/2025/07/people-${item}.jpg)`, backgroundSize: 'cover', backgroundPosition: 'center', height: '550px',
                         }}
                         >
-                        <div className="carousel-caption d-none d-md-block">
-                            <motion.h2 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                            Modern streetwear
-                            </motion.h2>
-                            <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-                            limitless possibilities.
-                            </motion.p>
-                        </div>
                         </motion.div>
                     </div>
                     ))}
@@ -68,7 +60,7 @@ const Home = () => {
                     <span className="visually-hidden">Next</span>
                 </button>
                 <div className="container">
-                <h1 className="display-3 mb-4">Step Into the Future</h1>
+                <h1 className="display-3 mb-4 mt-4">Step Into the Future</h1>
                 <p className="lead mb-5 text-white">New collections dropping soon.</p>
             </div>
             </div>

@@ -22,7 +22,7 @@ const ShopSingle = () => {
             try {
                 const response = await fetch('https://wp1.edukacija.online/backend/wp-json/wp/v2/product?slug=' + id + '&_embed');
                 if (!response.ok) {
-                    throw new Error(`Došlo je do greške: ${response.status}`);
+                    throw new Error(`Error occured: ${response.status}`);
                 }
                 const json = await response.json();
                 setData(json[0]);
@@ -58,7 +58,7 @@ const ShopSingle = () => {
                                 <div key={i}>
                                     <Link onClick={() => setOpen(true)}>
                                         <img
-                                            src={data.acf[key].sizes.medium_large || "https://front1.edukacija.online/dvidovic/projekt/img/logo9.png"}
+                                            src={data.acf[key].sizes.full || "https://front1.edukacija.online/dvidovic/projekt/img/logo9.png"}
                                         />
                                     </Link>
                                 </div>
@@ -68,8 +68,8 @@ const ShopSingle = () => {
                             open={open}
                             close={() => setOpen(false)}
                             slides={[
-                                { src: data.acf.slika1.sizes.large},
-                                { src: data.acf.slika2.sizes.large},
+                                { src: data.acf.slika1.sizes.full},
+                                { src: data.acf.slika2.sizes.full},
                             ]}
                         />
                     </div>
