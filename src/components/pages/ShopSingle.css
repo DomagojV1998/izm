@@ -38,9 +38,10 @@ footer p {
 }
 
 footer a {
-    color: #ccc;
+    font-size: 2rem;
     font-weight: 500;
     transition: color 0.3s ease;
+    color: #000000 !important; 
 }
 
 footer a:hover {

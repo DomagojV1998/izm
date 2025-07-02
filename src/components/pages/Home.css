@@ -1,11 +1,19 @@
 .hero-section {
-    height: 90vh;
-    background: linear-gradient(to bottom, #000, #111);
-    padding: 60px 0;
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://front1.edukacija.online/dvidovic/projekt/img/bg.png');
+  background-size: cover;
+  background-position: center;
 }
 
-.placeholder-img {
-    width: 100%;
-    height: 400px;
-    border-radius: 16px;
+.carousel-caption h2 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.carousel-caption p {
+  font-size: 1.25rem;
+}
+
+.carousel-item {
+  transition: transform 0.6s ease, opacity 0.6s ease !important;
 }

@@ -17,7 +17,7 @@ const Shop = () => {
         try {
             const response = await fetch('https://wp1.edukacija.online/backend/wp-json/wp/v2/pages/614');
             if (!response.ok) {
-            throw new Error(`Došlo je do greške: ${response.status}`);
+            throw new Error('Error occured: ${response.status}');
             }
             const json = await response.json();
             setData(json);
@@ -37,21 +37,21 @@ const Shop = () => {
         <motion.section className="hero py-5" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="container text-center">
                 <div className="row">
-                    <div className="col-md-6 col-sm-6 mb-4">
+                    <div className="col-md-6 col-sm-12 mb-4">
                         <p className="fs-4">Clothing</p>
                         <a href="/clothing">
                             <Img
-                                className="img-fluid rounded shadow-sm"
+                                className=""
                                 src="https://front1.edukacija.online/dvidovic/projekt/img/ftp-front.jpg"
                                 alt="clothing"
                             />
                         </a>
                     </div>
-                    <div className="col-md-6 col-sm-6 mb-4">
+                    <div className="col-md-6 col-sm-12 mb-4">
                         <p className="fs-4">Prints</p>
                         <a href="/prints">
                             <Img
-                                className="img-fluid rounded shadow-sm"
+                                className=""
                                 src="https://front1.edukacija.online/dvidovic/projekt/img/iseeyou.jpg"
                                 alt="prints"
                             />

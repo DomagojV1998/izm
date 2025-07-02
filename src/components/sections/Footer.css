@@ -1,5 +1,6 @@
 footer a {
-    font-size: 0.9rem;
+    font-size: 10rem;
+    font-weight: 500;
     transition: color 0.3s ease;
     color: #000000 !important; 
 }

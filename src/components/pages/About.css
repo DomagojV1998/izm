@@ -24,8 +24,7 @@
     cursor: pointer;
 }
 
-.about-image:hover,
-.about-image:focus {
+.about-image:hover, .about-image:focus {
     transform: scale(1.05);
     filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
     outline: none;

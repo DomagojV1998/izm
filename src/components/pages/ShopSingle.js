@@ -69,8 +69,8 @@ const ShopSingle = () => {
                             open={open}
                             close={() => setOpen(false)}
                             slides={[
-                                { src: "https://placehold.co/600x400" },
-                                { src: "https://placehold.co/600x400" },
+                                { src: "https://front1.edukacija.online/dvidovic/projekt/img/logo9.png" },
+                                { src: "https://front1.edukacija.online/dvidovic/projekt/img/logo9.png" },
                             ]}
                         />
                     </div>

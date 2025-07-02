@@ -61,7 +61,7 @@ const Contact = () => {
                 <input type="text" name="name" className="form-control mb-3" placeholder="Name" value={form.name} onChange={handleChange} required />
                 <input type="email" name="email" className="form-control mb-3" placeholder="Email" value={form.email} onChange={handleChange} required />
                 <textarea name="message" className="form-control mb-3" placeholder="Message" value={form.message} onChange={handleChange} required rows={4} />
-                <button type="submit" className={`btn btn-primary ${!isFormValid ? "disabled" : ""}`}> Send </button>
+                <button type="submit" className={`btn btn-dark ${!isFormValid ? "disabled" : ""}`}> Send </button>
               </form>
             )}
           </div>

@@ -3,7 +3,7 @@ import './Img.css'
 import { motion } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Img = ({src, size="medium_large", alt = "Nema opisa za sliku", classList}) => 
+const Img = ({src, size="medium_large", alt = "No image description", classList}) => 
 {
 
     let url = "https://placehold.co/600x400?text=Nema+Slike";
@@ -11,11 +11,11 @@ const Img = ({src, size="medium_large", alt = "Nema opisa za sliku", classList})
     if(src?.sizes?.[size]){
         url = src?.sizes?.[size]?.source_url;
     } 
-    else if(src?.sizes?.["full"]){
-        url = src?.sizes?.["full"]?.source_url;
+    else if(src?.sizes?.["medium"]){
+        url = src?.sizes?.["medium"]?.source_url;
     }
     else
-        console.log("Nemaš uopće slike");
+        console.log("You don't have an image");
 
     return (
         <img src={url} alt={alt} className={classList + ' feature-image'} />
