@@ -36,19 +36,21 @@ const About = () => {
       <div className="container text-center">
         <div className="row align-items-center">
           <motion.div className="col-lg-4 mb-4 mb-lg-0" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
-            <p>{data.content.rendered ? <div dangerouslySetInnerHTML={{ __html: data.content.rendered }} /> : (
-              <>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis luctus libero.
-                Curabitur suscipit fermentum mauris eu scelerisque. Phasellus orci quam, fermentum nec viverra eu,
-                ultrices ut ligula.
-              </>
-            )}</p>
+            <h3>It all started in 2017, out of a dusty garage on the east side of the city. </h3>
+            <p>
+              A couple of skaters with grease under their nails and busted decks decided they were tired of wearing the same mass-produced gear that didn’t represent them — or the culture they lived and breathed.
+              By day, they were wrenching on beat-up drift cars. By night, they were hitting local skate spots until security showed up. Between it all, they started printing tees by hand, using heat guns and stencils, mixing spray paint with ambition. That garage became the first unofficial HQ of [Your Brand Name] — a label born from the collision of two passions: skateboarding and car culture.
+            </p>
+            <h3>Built for the Streets. Fueled by Wheels.</h3>
+            <p>
+                Born from the grind of concrete and the roar of engines, our brand is more than just streetwear — it’s a lifestyle forged by skateboarding and car culture. We live for the late-night sessions, early-morning meets, and every adrenaline-pumped moment in between.
+            </p>
           </motion.div>
 
           <motion.div className="col-lg-4 mb-4 mb-lg-0" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}>
             <a href="/shop">
               <img
-                className="about-image img-fluid rounded shadow-lg"
+                className="about-image img-fluid rounded"
                 src="https://front1.edukacija.online/dvidovic/projekt/img/logo7.png"
                 alt="About"
               />
@@ -56,13 +58,15 @@ const About = () => {
           </motion.div>
 
           <motion.div className="col-lg-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}>
+            <h3>Our designs reflect the raw energy of the streets — inspired by scratched decks, oil-stained hands, and the unshakable drive to keep moving forward.</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis luctus libero.
-              Curabitur suscipit fermentum mauris eu scelerisque. Phasellus orci quam, fermentum nec viverra eu,
-              ultrices ut ligula. Curabitur sed accumsan diam, ac pulvinar turpis.
+               Whether you’re dropping into bowls or burning rubber, we’re right there with you — repping the hustle, the rebellion, and the freedom that comes with it.
             </p>
+            <h3>We don’t follow trends. We set pace — at 100 mph or on four wheels.</h3>
             <p>
-              Integer finibus sapien quis quam vestibulum, a mattis massa egestas.
+              We don’t follow trends. We set pace — at 100 mph or on four wheels.
+              This is for the skaters, the tuners, the misfits, and the die-hards who live to ride and ride to live.
+              This is streetwear with an engine. This is our lane.
             </p>
           </motion.div>
         </div>

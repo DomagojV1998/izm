@@ -40,7 +40,7 @@ const Shop = () => {
                     <div className="col-md-6 col-sm-12 mb-4">
                         <p className="fs-4">Clothing</p>
                         <a href="/clothing">
-                            <Img
+                            <img
                                 className=""
                                 src="https://front1.edukacija.online/dvidovic/projekt/img/ftp-front.jpg"
                                 alt="clothing"
@@ -50,7 +50,7 @@ const Shop = () => {
                     <div className="col-md-6 col-sm-12 mb-4">
                         <p className="fs-4">Prints</p>
                         <a href="/prints">
-                            <Img
+                            <img
                                 className=""
                                 src="https://front1.edukacija.online/dvidovic/projekt/img/iseeyou.jpg"
                                 alt="prints"

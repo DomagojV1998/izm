@@ -1,0 +1,16 @@
+.password-eye {
+    position: relative;
+}
+
+.password-eye span {
+    position: absolute;
+    right: 20px;
+    bottom: 6px;
+    cursor: pointer;
+}
+
+.password-eye span svg {
+    height: 20px;
+    opacity: 0.5;
+}
+

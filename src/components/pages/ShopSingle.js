@@ -45,6 +45,8 @@ const ShopSingle = () => {
         slidesToShow: 1,
         slidesToScroll: 1
     };
+
+    console.log(data);
     
     return(
         <section className="hero py-5">
@@ -52,14 +54,11 @@ const ShopSingle = () => {
                 <motion.div className="row" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                     <div className="col-md-6 col-sm-12">
                         <Slider {...settings}>
-                            {[1, 2].map((_, i) => (
+                            {["slika1", "slika2"].map((key, i) => (
                                 <div key={i}>
                                     <Link onClick={() => setOpen(true)}>
-                                        <Img
-                                        src={data?._embedded?.["wp:featuredmedia"]?.[0]?.media_details}
-                                        size="medium_large"
-                                        alt={"Image: " + data.title.rendered}
-                                        classList="mb-4"
+                                        <img
+                                            src={data.acf[key].sizes.medium_large || "https://front1.edukacija.online/dvidovic/projekt/img/logo9.png"}
                                         />
                                     </Link>
                                 </div>
@@ -69,8 +68,8 @@ const ShopSingle = () => {
                             open={open}
                             close={() => setOpen(false)}
                             slides={[
-                                { src: "https://front1.edukacija.online/dvidovic/projekt/img/logo9.png" },
-                                { src: "https://front1.edukacija.online/dvidovic/projekt/img/logo9.png" },
+                                { src: data.acf.slika1.sizes.large},
+                                { src: data.acf.slika2.sizes.large},
                             ]}
                         />
                     </div>

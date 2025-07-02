@@ -8,6 +8,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+    const togglePassswordVisibility = () => setShowPassword(!showPassword);
 
   const navigate = useNavigate();
 

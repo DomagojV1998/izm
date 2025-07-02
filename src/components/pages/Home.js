@@ -29,8 +29,11 @@ const Home = () => {
         fetchPage();
     }, []);
 
+    console.log(data);
+
     if (error) return <Error />;
     if (!data) return <Loading />;
+
 
 
     return(
@@ -40,15 +43,15 @@ const Home = () => {
                 <div className="carousel-inner">
                     {[1, 2, 3].map((item, index) => (
                     <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={index}>
-                        <motion.div className="d-block w-100 text-white p-5" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: index * 0.2 }} style={{  backgroundImage: `url(/img/slide${item}.jpg)`, backgroundSize: 'cover', backgroundPosition: 'center', height: '500px',
+                        <motion.div className="d-block w-100 text-white p-5" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: index * 0.2 }} style={{  backgroundImage: `url(https://wp1.edukacija.online/backend/wp-content/uploads/2025/07/logo${item}-scaled.jpg)`, backgroundSize: 'cover', backgroundPosition: 'center', height: '500px',
                         }}
                         >
                         <div className="carousel-caption d-none d-md-block">
                             <motion.h2 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                            Slide {item} Title
+                            Modern streetwear
                             </motion.h2>
                             <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-                            Slide {item} description goes here.
+                            limitless possibilities.
                             </motion.p>
                         </div>
                         </motion.div>
