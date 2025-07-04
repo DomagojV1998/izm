@@ -7,7 +7,7 @@ import Error from "../parts/Error.js";
 import { motion } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Shop = () => {
+const Prints = () => {
 
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
@@ -42,7 +42,7 @@ const Shop = () => {
                             <Link className="prints-img" to={'/shop/' + product.slug}>
                                 <Img
                                     src={product?._embedded?.["wp:featuredmedia"]?.[0]?.media_details}
-                                    size="large"
+                                    size="medium_large"
                                     alt={"Image: " + product.title.rendered}
                                     classList=""
                                 />
@@ -56,4 +56,4 @@ const Shop = () => {
     );
 };
 
-export default Shop;
+export default Prints;

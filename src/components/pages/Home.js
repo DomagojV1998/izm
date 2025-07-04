@@ -5,6 +5,7 @@ import Loading from "../parts/Loading.js"
 import Error from "../parts/Error.js";
 import { motion } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
+import SearchBox from "../pages/Searchbox.js"   ; 
 
 
 const Home = () => {
@@ -37,7 +38,7 @@ const Home = () => {
 
 
     return(
-        
+       
         <motion.section className="hero-section d-flex align-items-center justify-content-center text-center text-light" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
             <div id="homeCarousel" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
@@ -62,6 +63,9 @@ const Home = () => {
                 <div className="container">
                 <h1 className="display-3 mb-4 mt-4">Step Into the Future</h1>
                 <p className="lead mb-5 text-white">New collections dropping soon.</p>
+                <div className="search-box mb-5">
+                    <SearchBox /> 
+                </div>
             </div>
             </div>
         </motion.section>

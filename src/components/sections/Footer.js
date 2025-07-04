@@ -26,7 +26,7 @@ const Footer = () => {
     ];
 
   return (
-    <motion.footer className="py-4" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+    <motion.footer className="py-4 fw-bold" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
       <div className="container text-center">
         {/* Social Icons */}
         <div className="mb-3 d-flex justify-content-center gap-4">

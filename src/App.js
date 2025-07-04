@@ -16,10 +16,12 @@ import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
 import Clothing from "./components/pages/Clothing";
 import Prints from "./components/pages/Prints";
+import Cart from './components/pages/Cart';
 
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
+import Logout from './components/pages/Logout';
 
 function App() {
   return (
@@ -36,6 +38,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </div>

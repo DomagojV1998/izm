@@ -15,6 +15,22 @@
     transition: color 0.3s;
 }
 
+.nav-link svg {
+    width: 20px;
+    height: 20px;
+    fill: #000000;
+    margin-right: 5px;
+    transition: fill 0.3s;
+}
+
+.nav-item svg {
+    width: 24px;
+    height: 24px;
+    fill: #000000;
+    transition: fill 0.3s;
+}
+
 .nav-link:hover {
     color: #000000 !important;
 }
+

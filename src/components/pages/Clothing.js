@@ -7,7 +7,7 @@ import Error from "../parts/Error.js";
 import { motion } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Shop = () => {
+const Clothing = () => {
 
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
@@ -17,7 +17,7 @@ const Shop = () => {
         try {
             const response = await fetch('https://wp1.edukacija.online/backend/wp-json/wp/v2/product?product-category=77&_embed');
             if (!response.ok) {
-            throw new Error(`Došlo je do greške: ${response.status}`);
+            throw new Error(`An Error occured: ${response.status}`);
             }
             const json = await response.json();
             setData(json);
@@ -43,7 +43,7 @@ const Shop = () => {
                         <Img
                         src={product?._embedded?.["wp:featuredmedia"]?.[0]?.media_details}
                         size="medium_large"
-                        alt={"Istaknuta slika za članak: " + product.title.rendered}
+                        alt={"Image: " + product.title.rendered}
                         classList=""
                         />
                     </Link>
@@ -56,4 +56,4 @@ const Shop = () => {
     );
 };
 
-export default Shop;
+export default Clothing;

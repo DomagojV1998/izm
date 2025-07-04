@@ -52,13 +52,13 @@ const ShopSingle = () => {
         <section className="hero py-5">
             <div className="container">
                 <motion.div className="row" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-                    <div className="col-md-6 col-sm-12">
+                    <div className="col-md-6 col-sm-12 mb-4">
                         <Slider {...settings}>
                             {["slika1", "slika2"].map((key, i) => (
                                 <div key={i}>
                                     <Link onClick={() => setOpen(true)}>
                                         <img
-                                            src={data.acf[key].sizes.full || "https://front1.edukacija.online/dvidovic/projekt/img/logo9.png"}
+                                            src={data.acf[key].sizes.medium_large || data.acf[key].sizes.medium_large}
                                         />
                                     </Link>
                                 </div>
@@ -68,12 +68,12 @@ const ShopSingle = () => {
                             open={open}
                             close={() => setOpen(false)}
                             slides={[
-                                { src: data.acf.slika1.sizes.full},
-                                { src: data.acf.slika2.sizes.full},
+                                { src: data.acf.slika1.sizes.medium_large},
+                                { src: data.acf.slika2.sizes.medium_large},
                             ]}
                         />
                     </div>
-                    <div className="col-md-6 col-sm-12">
+                    <div className="col-md-5 col-sm-12 ms-5">
                         <motion.div className="selector" initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4, duration: 0.6 }}>
                             <h3 className="mb-3">{data.title.rendered}</h3>
                             <h4 className="mb-4">28€</h4>
@@ -88,7 +88,7 @@ const ShopSingle = () => {
                                 <input className="form-control w-25" type="number" min="1" defaultValue="1" />
                                 <button className="btn btn-outline-light">Add to cart</button>
                             </div>
-                            <p className="fw-bold mt-4">Description:</p>
+                            <p className="mt-4">Description:</p>
                             <div dangerouslySetInnerHTML={{ __html: data.content.rendered }} />
                         </motion.div>
                     </div>

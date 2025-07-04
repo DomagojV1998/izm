@@ -3,7 +3,7 @@ import './Img.css'
 import { motion } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Img = ({src, size="medium_large", alt = "No image description", classList}) => 
+const Img = ({src, size="full", alt = "No image description", classList}) => 
 {
 
     let url = "https://placehold.co/600x400?text=Nema+Slike";
@@ -11,8 +11,8 @@ const Img = ({src, size="medium_large", alt = "No image description", classList}
     if(src?.sizes?.[size]){
         url = src?.sizes?.[size]?.source_url;
     } 
-    else if(src?.sizes?.["medium"]){
-        url = src?.sizes?.["medium"]?.source_url;
+    else if(src?.sizes?.["medium_large"]){
+        url = src?.sizes?.["medium_large"]?.source_url;
     }
     else
         console.log("You don't have an image");

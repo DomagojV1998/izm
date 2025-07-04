@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const Loading = () => 
 {
     return (
-        <div className="d-flex justify-content-center align-items-center" style={{minHeight: "1000px"}}>
+        <div className="d-flex justify-content-center align-items-center" style={{minHeight: "500px"}}>
             <div className="spinner-border text-dark" role="status">
                 <span className="visually-hidden">
                     Loading...
