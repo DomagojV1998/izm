@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./Home.css"
 import Loading from "../parts/Loading.js"
 import Error from "../parts/Error.js";
@@ -35,16 +34,16 @@ const Home = () => {
     if (error) return <Error />;
     if (!data) return <Loading />;
 
-
+    const slides = Object.values(data.acf);
 
     return(
        
         <motion.section className="hero-section d-flex align-items-center justify-content-center text-center text-light" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
             <div id="homeCarousel" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
-                    {[1, 2, 3].map((item, index) => (
+                    {slides.map((imgurl, index) => (
                     <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={index}>
-                        <motion.div className="d-block w-100 text-white p-5" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: index * 0.2 }} style={{  backgroundImage: `url(https://wp1.edukacija.online/backend/wp-content/uploads/2025/07/people-${item}.jpg)`, backgroundSize: 'cover', backgroundPosition: 'center', height: '550px',
+                        <motion.div className="d-block w-100 text-white p-5" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: index * 0.2 }} style={{  backgroundImage: `url(${imgurl})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '550px',
                         }}
                         >
                         </motion.div>

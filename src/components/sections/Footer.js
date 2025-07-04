@@ -20,7 +20,7 @@ const Footer = () => {
     ];
     const socialIcons = [
         { icon: faInstagram, url: "https://instagram.com", label: "Instagram" },
-        { icon: faTwitter, url: "https://twitter.com", label: "Twitter" },
+        { icon: faTwitter, url: "https://x.com/", label: "Twitter" },
         { icon: faYoutube, url: "https://youtube.com", label: "YouTube" },
         { icon: faLinkedin, url: "https://linkedin.com", label: "LinkedIn" },
     ];

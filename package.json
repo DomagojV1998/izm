@@ -1,5 +1,6 @@
 {
   "name": "izm",
+  "homepage": "https://front1.edukacija.online/dvidovic",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

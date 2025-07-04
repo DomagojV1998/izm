@@ -28,6 +28,12 @@ a {
     transition: fill 0.3s;
 }
 
+section.hero {
+    min-height: calc(100vh - 266px);
+    display: flex;
+    align-items: center;
+}
+
 @media (max-width: 768px) {
     .placeholder-img {
         height: 250px;

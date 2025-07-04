@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import Img from "../parts/Img.js"
 import Loading from "../parts/Loading.js"
 import Error from "../parts/Error.js";
 import "slick-carousel/slick/slick.css";
@@ -58,7 +57,7 @@ const ShopSingle = () => {
                                 <div key={i}>
                                     <Link onClick={() => setOpen(true)}>
                                         <img
-                                            src={data.acf[key].sizes.medium_large || data.acf[key].sizes.medium_large}
+                                            src={data.acf[key].sizes.medium_large || data.acf[key].sizes.medium_large} alt="Product-image"
                                         />
                                     </Link>
                                 </div>
@@ -75,7 +74,7 @@ const ShopSingle = () => {
                     </div>
                     <div className="col-md-5 col-sm-12 ms-5">
                         <motion.div className="selector" initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4, duration: 0.6 }}>
-                            <h3 className="mb-3">{data.title.rendered}</h3>
+                            <h3 className="mb-3" dangerouslySetInnerHTML={{ __html: data.title.rendered }} />
                             <h4 className="mb-4">28€</h4>
                             <label htmlFor="size">Size:</label>
                             <select name="size" className="form-select mb-3">

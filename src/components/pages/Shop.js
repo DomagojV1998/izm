@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./Shop.css"
 import Loading from "../parts/Loading.js"
 import Error from "../parts/Error.js";
 import { motion } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Img from "../parts/Img.js";
 
 const Shop = () => {
 
