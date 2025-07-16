@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import "./Shop.css"
 import Loading from "../parts/Loading.js"
 import Error from "../parts/Error.js";
@@ -9,6 +10,11 @@ const Shop = () => {
 
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
+
+     const Links = [
+    { to: "/prints", label: "Prints" },
+    { to: "/clothing", label: "Clothing" },
+    ];
 
     useEffect(() => {
     const fetchPage = async () => {
@@ -37,23 +43,23 @@ const Shop = () => {
                 <div className="row">
                     <div className="col-md-6 col-sm-12 mb-4">
                         <p className="fs-4">Clothing</p>
-                        <a href="/clothing">
+                        <Link className="link" to="/clothing">            
                             <img
                                 className=""
                                 src="https://front1.edukacija.online/dvidovic/projekt/img/ftp-front.jpg"
                                 alt="clothing"
                             />
-                        </a>
+                        </Link>
                     </div>
                     <div className="col-md-6 col-sm-12 mb-4">
                         <p className="fs-4">Prints</p>
-                        <a href="/prints">
+                        <Link className="link" to="/prints">
                             <img
                                 className=""
                                 src="https://front1.edukacija.online/dvidovic/projekt/img/iseeyou.jpg"
                                 alt="prints"
                             />
-                        </a>
+                         </Link>
                     </div>
                 </div>
             </div>

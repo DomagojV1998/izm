@@ -72,7 +72,7 @@ const ShopSingle = () => {
                             ]}
                         />
                     </div>
-                    <div className="col-md-5 col-sm-12 ms-5">
+                    <div className="col-md-5 col-sm-12">
                         <motion.div className="selector" initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4, duration: 0.6 }}>
                             <h3 className="mb-3" dangerouslySetInnerHTML={{ __html: data.title.rendered }} />
                             <h4 className="mb-4">28€</h4>
